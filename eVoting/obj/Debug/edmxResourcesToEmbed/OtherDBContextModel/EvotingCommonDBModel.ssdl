@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OtherDBContextModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_UserComplaints">
+    <Key>
+      <PropertyRef Name="ComplaintID" />
+    </Key>
+    <Property Name="ComplaintID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ComplaintFor" Type="varchar" MaxLength="100" />
+    <Property Name="Details" Type="varchar" MaxLength="1000" />
+    <Property Name="IsViewed" Type="bit" />
+    <Property Name="IsAcknowledged" Type="bit" />
+    <Property Name="comments" Type="varchar" MaxLength="100" />
+    <Property Name="Submitter" Type="varchar" MaxLength="20" />
+    <Property Name="SubmitterEmail" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblAreas">
+    <Key>
+      <PropertyRef Name="AreaId" />
+    </Key>
+    <Property Name="AreaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AreaName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="District" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="State" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="ElectionProcess" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblCandidateMaster">
+    <Key>
+      <PropertyRef Name="CandidateId" />
+    </Key>
+    <Property Name="CandidateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CandidateName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="DateOfBirth" Type="datetime" />
+    <Property Name="CandidatePicture" Type="varbinary(max)" />
+    <Property Name="CandidateDetails" Type="varchar" MaxLength="200" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="tblElectionCandidate">
+    <Key>
+      <PropertyRef Name="CandidateNo" />
+    </Key>
+    <Property Name="CandidateNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CandidateId" Type="int" />
+    <Property Name="PartyId" Type="int" />
+    <Property Name="AreaId" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Symbol" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tblElectionParties">
+    <Key>
+      <PropertyRef Name="PartyId" />
+    </Key>
+    <Property Name="PartyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartyName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartyHead" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="PartyHeadOffice" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="PartyLogo" Type="varbinary(max)" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="tblEvotingAdmins">
+    <Key>
+      <PropertyRef Name="VoterID" />
+    </Key>
+    <Property Name="VoterID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="AdminTypeID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblIdeas">
+    <Key>
+      <PropertyRef Name="IdeaID" />
+    </Key>
+    <Property Name="IdeaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdeaFor" Type="varchar" MaxLength="100" />
+    <Property Name="Details" Type="varchar" MaxLength="1000" />
+    <Property Name="IsViewed" Type="bit" />
+    <Property Name="IsAcknowledged" Type="bit" />
+    <Property Name="comments" Type="varchar" MaxLength="100" />
+    <Property Name="Submitter" Type="varchar" MaxLength="20" />
+    <Property Name="SubmitterEmailID" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="tblSuperAreaDetail">
+    <Key>
+      <PropertyRef Name="AreaNumber" />
+    </Key>
+    <Property Name="AreaNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AreaName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="AreaAdminId" Type="varchar" MaxLength="10" />
+    <Property Name="ToReportingAdminID" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="tblVoteCount">
+    <Key>
+      <PropertyRef Name="SerialNumber" />
+    </Key>
+    <Property Name="SerialNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CandidateNo" Type="int" />
+    <Property Name="Count" Type="int" />
+    <Property Name="CandidateId" Type="int" />
+  </EntityType>
+  <Association Name="FK__tblElecti__AreaI__778AC167">
+    <End Role="tblAreas" Type="Self.tblAreas" Multiplicity="0..1" />
+    <End Role="tblElectionCandidate" Type="Self.tblElectionCandidate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblAreas">
+        <PropertyRef Name="AreaId" />
+      </Principal>
+      <Dependent Role="tblElectionCandidate">
+        <PropertyRef Name="AreaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblElecti__Candi__75A278F5">
+    <End Role="tblCandidateMaster" Type="Self.tblCandidateMaster" Multiplicity="0..1" />
+    <End Role="tblElectionCandidate" Type="Self.tblElectionCandidate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCandidateMaster">
+        <PropertyRef Name="CandidateId" />
+      </Principal>
+      <Dependent Role="tblElectionCandidate">
+        <PropertyRef Name="CandidateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblElecti__Party__76969D2E">
+    <End Role="tblElectionParties" Type="Self.tblElectionParties" Multiplicity="0..1" />
+    <End Role="tblElectionCandidate" Type="Self.tblElectionCandidate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblElectionParties">
+        <PropertyRef Name="PartyId" />
+      </Principal>
+      <Dependent Role="tblElectionCandidate">
+        <PropertyRef Name="PartyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblSuperA__AreaA__14270015">
+    <End Role="tblEvotingAdmins" Type="Self.tblEvotingAdmins" Multiplicity="0..1" />
+    <End Role="tblSuperAreaDetail" Type="Self.tblSuperAreaDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblEvotingAdmins">
+        <PropertyRef Name="VoterID" />
+      </Principal>
+      <Dependent Role="tblSuperAreaDetail">
+        <PropertyRef Name="AreaAdminId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblSuperA__ToRep__151B244E">
+    <End Role="tblEvotingAdmins" Type="Self.tblEvotingAdmins" Multiplicity="0..1" />
+    <End Role="tblSuperAreaDetail" Type="Self.tblSuperAreaDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblEvotingAdmins">
+        <PropertyRef Name="VoterID" />
+      </Principal>
+      <Dependent Role="tblSuperAreaDetail">
+        <PropertyRef Name="ToReportingAdminID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblVoteCo__Candi__2B0A656D">
+    <End Role="tblElectionCandidate" Type="Self.tblElectionCandidate" Multiplicity="0..1" />
+    <End Role="tblVoteCount" Type="Self.tblVoteCount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblElectionCandidate">
+        <PropertyRef Name="CandidateNo" />
+      </Principal>
+      <Dependent Role="tblVoteCount">
+        <PropertyRef Name="CandidateNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblVoteCo__Candi__2BFE89A6">
+    <End Role="tblCandidateMaster" Type="Self.tblCandidateMaster" Multiplicity="0..1" />
+    <End Role="tblVoteCount" Type="Self.tblVoteCount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCandidateMaster">
+        <PropertyRef Name="CandidateId" />
+      </Principal>
+      <Dependent Role="tblVoteCount">
+        <PropertyRef Name="CandidateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="OtherDBContextModelStoreContainer">
+    <EntitySet Name="tbl_UserComplaints" EntityType="Self.tbl_UserComplaints" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblAreas" EntityType="Self.tblAreas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblCandidateMaster" EntityType="Self.tblCandidateMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblElectionCandidate" EntityType="Self.tblElectionCandidate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblElectionParties" EntityType="Self.tblElectionParties" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblEvotingAdmins" EntityType="Self.tblEvotingAdmins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblIdeas" EntityType="Self.tblIdeas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSuperAreaDetail" EntityType="Self.tblSuperAreaDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblVoteCount" EntityType="Self.tblVoteCount" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__tblElecti__AreaI__778AC167" Association="Self.FK__tblElecti__AreaI__778AC167">
+      <End Role="tblAreas" EntitySet="tblAreas" />
+      <End Role="tblElectionCandidate" EntitySet="tblElectionCandidate" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblElecti__Candi__75A278F5" Association="Self.FK__tblElecti__Candi__75A278F5">
+      <End Role="tblCandidateMaster" EntitySet="tblCandidateMaster" />
+      <End Role="tblElectionCandidate" EntitySet="tblElectionCandidate" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblElecti__Party__76969D2E" Association="Self.FK__tblElecti__Party__76969D2E">
+      <End Role="tblElectionParties" EntitySet="tblElectionParties" />
+      <End Role="tblElectionCandidate" EntitySet="tblElectionCandidate" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblSuperA__AreaA__14270015" Association="Self.FK__tblSuperA__AreaA__14270015">
+      <End Role="tblEvotingAdmins" EntitySet="tblEvotingAdmins" />
+      <End Role="tblSuperAreaDetail" EntitySet="tblSuperAreaDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblSuperA__ToRep__151B244E" Association="Self.FK__tblSuperA__ToRep__151B244E">
+      <End Role="tblEvotingAdmins" EntitySet="tblEvotingAdmins" />
+      <End Role="tblSuperAreaDetail" EntitySet="tblSuperAreaDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblVoteCo__Candi__2B0A656D" Association="Self.FK__tblVoteCo__Candi__2B0A656D">
+      <End Role="tblElectionCandidate" EntitySet="tblElectionCandidate" />
+      <End Role="tblVoteCount" EntitySet="tblVoteCount" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblVoteCo__Candi__2BFE89A6" Association="Self.FK__tblVoteCo__Candi__2BFE89A6">
+      <End Role="tblCandidateMaster" EntitySet="tblCandidateMaster" />
+      <End Role="tblVoteCount" EntitySet="tblVoteCount" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

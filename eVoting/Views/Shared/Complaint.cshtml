@@ -1,0 +1,86 @@
+﻿@model IEnumerable<eVoting.OtherDBContextModel.UserComplaints>
+
+<br />
+<span class="h3"> <b> Your  Complaints </b></span>
+<br />
+<br />
+<table class="table panel-heading" style="background-color:lightgreen">
+@if (Model.Any())
+{ 
+
+    <tr style="background-color:black;color:white">
+
+                <th>
+                    @Html.DisplayNameFor(model => model.ComplaintID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ComplaintFor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Details)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsViewed)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsAcknowledged)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.comments)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Submitter)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SubmitterEmail)
+                </th>
+                <th></th>
+            </tr>
+
+
+
+    foreach (var item in Model)
+    {
+        <tr style="color:black">
+            <td>
+                @Html.DisplayFor(modelItem => item.ComplaintID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComplaintFor)
+            </td>
+            <td>
+                @Html.TextAreaFor(modelItem => item.Details, 5, 2000, new { @readonly = "readonly" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsViewed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAcknowledged)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.comments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Submitter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubmitterEmail)
+            </td>
+            <td>
+               
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+              
+            </td>
+        </tr>
+    }
+
+}
+else
+{
+    <tr>
+        <td colspan="5">
+            <span class="h3 text-left left pull-left" style="color:black;">you have not made any complaint yet </span>
+        </td>
+    </tr>
+}
+        </table>

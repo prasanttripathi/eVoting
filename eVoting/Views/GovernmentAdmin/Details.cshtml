@@ -1,0 +1,93 @@
+﻿@model GovernmentDBModels.UserVoterIDDetails
+
+@{
+    ViewBag.Title = "Details";
+}
+@{
+    Layout = "~/Views/Shared/_Home.cshtml";
+}
+
+
+<head>
+    <title>
+
+    </title>
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+
+    <script src="~/Scripts/jquery.min.js"></script>
+    <link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<h2>Details</h2>
+
+<div>
+    <h4>User VoterID Details</h4>
+    <hr />
+    <div class="jumbotron">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FathersName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FathersName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateOfBirth)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.District)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.District)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.State)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.State)
+            </dd>
+
+        </dl>
+    </div>
+    </div>
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { ID =Model.VoterId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@
+
+<div class="btn btn-success btn-sm">
+    <b class="links">
+        @Html.ActionLink("Edit", "Edit", new { ID =Model.VoterId }, new { style = "color:white" })
+    </b>
+</div>
+<div class="btn btn-danger btn-sm">
+    <b class="links glyphicon glyphicon-arrow-left text-center">
+        @Html.ActionLink("Back to List", "Index", null, new { style = "color:white" })
+    </b>
+ </div>

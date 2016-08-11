@@ -1,0 +1,103 @@
+﻿@model IList<eVoting.OtherDBContextModel.Area>
+
+<style type="text/css">
+    .linkActive {
+        color: white;
+    }
+
+
+        .linkActive:hover {
+            color: black;
+        }
+
+    .linkInActive {
+        color: white;
+       
+    }
+
+    .linkInActive:hover {
+        color: black;
+    }
+</style>
+
+<table class="table">
+    <tr class="h3" style="background-color:black;color:white">
+        <th>
+            @Html.DisplayName(" Area Name")
+        </th>
+        <th>
+            @Html.DisplayName("District")
+        </th>
+        <th>
+            @Html.DisplayName("State")
+        </th>
+        <th>
+            @Html.DisplayName("Status")
+        </th>
+        <th>
+            Action
+        </th>
+    </tr>
+
+    @for (var i = 0; i < Model.Count; i++)
+    {
+        if(Model[i].ElectionProcess == true)
+        { 
+        <tr style="background-color:lightgreen">
+            <th>
+                @Html.DisplayFor(x => x[i].AreaName)
+            </th>
+            <th>
+                @Html.DisplayFor(x => x[i].District)
+            </th>
+            <th>
+                @Html.DisplayFor(x => x[i].State)
+            </th>
+
+            @if (Model[i].ElectionProcess == true)
+            {
+                <th style="color:red">
+                    <span>In Progress </span>
+                </th>
+                <th style="color:green">
+                    <span class="btn btn-success">
+                        @Html.ActionLink("Stop", "StartStopElection", new { AreaId = Convert.ToInt32(Model[i].AreaId) }, new { @class = "linkInActive" })
+                    </span>
+                </th>
+            }
+        </tr>
+        }
+    if (Model[i].ElectionProcess == false)
+    {
+        <tr style="background-color:lightgray">
+            <th>
+                @Html.DisplayFor(x => x[i].AreaName)
+            </th>
+            <th>
+                @Html.DisplayFor(x => x[i].District)
+            </th>
+            <th>
+                @Html.DisplayFor(x => x[i].State)
+            </th>
+
+            @if (Model[i].ElectionProcess == false)
+            {
+                <th style="color:green">
+                    <span> Not Active </span>
+                </th>
+
+                <th style="color:red">
+                    <span class="btn btn-danger">
+                        @Html.ActionLink("Start", "StartStopElection", new { AreaId = Convert.ToInt32(Model[i].AreaId) }, new { @class = "linkActive" })
+                    </span>
+                </th>
+
+            }
+          
+        </tr>
+    }
+
+    }
+
+
+</table>

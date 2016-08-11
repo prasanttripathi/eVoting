@@ -1,0 +1,186 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_adminDashboard.cshtml";
+    ViewBag.Title = "Admin Dashboard";
+}
+
+
+<style type="text/css">
+  
+    #JumbotronColor
+    {
+        background-color: #ccccff !important;
+        border:solid;
+        border-color:white;
+           text-align:center;
+    }
+
+    .imgStyle {
+border-style: solid;
+ border-color:#f2f2f2;
+ border-style:solid; 
+ border-width:5px
+    }
+
+      .imgStyle:hover {
+ border-color:red;
+ border-width:2px;
+    }
+
+
+</style>
+
+<br />
+<span class="h2">Welcome to Super Admin Dashboard </span>
+<br />
+<br />
+
+
+<div class="jumbotron" style="background-color:lightskyblue">
+
+    <div class="container">
+        <div class="row">
+            <div class="col col-md-6">
+                @if (Session["Login"] != "Yes")
+                {
+                    if ( Session["Admin"] == "Admin")
+                    {
+                        if (Session["HasImage"] == "Yes")
+                        {
+                            <img id="displayPic" class="img-circle" src='@Url.Action("GetImageFromDatabase", "Account", new { @userID = Convert.ToInt32(Session["UserID"])})' alt="Something is wrong" height=300 width=300 />
+
+                        }
+                        else
+                        {
+                            <img id="displayPic" class="img-rounded" src="~/Images/profile.jpg" alt="Something is wrong" height=200 width=200 />
+                            <br /><span class="h3">opps ! Is that you :P </span>
+                        }
+
+                    }
+
+                }
+
+            </div>
+            <div class="col col-md-6">
+                <div class="panel panel-body">
+                    <table class="table">
+                        <tr>
+                            <td><span class="h4"> Name </span></td>
+                            <td> User </td>
+                        </tr>
+                        <tr>
+                            <td><span class="h4"> Age </span></td>
+                            <td> 24 </td>
+                        </tr>
+                      
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row jumbotron" id="JumbotronColor">
+            <div class="col col-md-3">
+                <span>
+                    <img  height="220" width="220" onmouseover="" ondblclick="location.href = '@Url.Action("CentralHome", "GovernmentAdmin")'" src="~/Images/users.png" class="imgStyle img-circle" />
+                    <br /> &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-lg btn-success h2" onclick="location.href = '@Url.Action("CentralHome", "GovernmentAdmin")'"> All User Details</button>
+                </span>
+            </div>
+            <div class="col col-md-3">
+                <span>
+                    <img height="220" width="220" src="~/Images/all requests.png" class="imgStyle img-circle" />
+                    <br />&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-lg btn-success h2" onclick="location.href = '@Url.Action("AllRequest", "AdminDashboard")'"> All Requests </button>
+
+                </span>
+            </div>
+           
+            <div class="col col-md-3">
+                <span>
+                    <img  height="220" width="220" ondblclick="location.href = '@Url.Action("NotImplemented", "Home")'" src="~/Images/Start.jpg" class="imgStyle img-circle" />
+                    <br /> &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-lg btn-success h2" onclick="location.href = '@Url.Action("InitiateElection", "AdminDashboard")'"> Initiate Election</button>
+                </span>
+            </div>
+            <div class="col col-md-3">
+                <span>
+                    <img  height="220" width="220" ondblclick="location.href = '@Url.Action("NotImplemented", "Home")'" src="~/Images/results.png" class="imgStyle img-circle" />
+                    <br />  &nbsp;&nbsp;&nbsp;
+                     <button type="button" class="btn btn-lg btn-success h2" onclick="location.href = '@Url.Action("NotImplemented", "Home")'"> Get All Results </button>
+
+                </span>
+            </div>
+        </div>
+        <div class="row jumbotron" id="JumbotronColor">
+            <div class="col col-md-3">
+                <span>
+                    <img  height="220" width="220" src="~/Images/Admin.png" class="imgStyle img-circle" />
+                    <br />&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-lg btn-success h2" onclick="location.href = '@Url.Action("NotImplemented", "Home")'"> All Admin Details </button>
+
+                </span>
+            </div>
+            <div class="col col-md-3">
+                <span>
+                    <img  height="220" width="220" src="~/Images/request-icon.jpg" class="imgStyle img-circle" />
+                    <br />&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-lg btn-success h2" onclick="location.href = '@Url.Action("NotImplemented", "Home")'"> Candidate Requests </button>
+                </span>
+            </div>
+            <div class="col col-md-3">
+                <span>
+                    <img height="220" width="220" src="~/Images/Departments.jpg" class="imgStyle img-circle" />
+                    <br />&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-lg btn-success h2" onclick="location.href = '@Url.Action("CandidateForElection", "MainAdmin")'"> Election Candidates </button>
+
+                </span>
+            </div>
+            
+            <div class="col col-md-3">
+                <span>
+                    <img  height="220" width="220" src="~/Images/announcement.jpg" class="imgStyle img-circle" />
+                    <br />&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-lg btn-success h2" onclick="location.href = '@Url.Action("NotImplemented", "Home")'"> Announce Updates </button>
+
+                </span>
+            </div>
+        </div>
+        <div class="row jumbotron" id="JumbotronColor">
+            <div class="col col-md-3">
+                <span>
+                    <img height="220" width="220" ondblclick="location.href = '@Url.Action("GetReports", "AdminDashboard")'" src="~/Images/Reports1.png" class="imgStyle img-circle" />
+                    <br /> &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-lg btn-success h2" onclick="location.href = '@Url.Action("GetReports", "AdminDashboard")'"> Get Reports</button>
+                </span>
+            </div>
+            <div class="col col-md-3">
+                <span>
+                    <img  height="220" width="220" src="~/Images/send Reports.jpg" class="imgStyle img-circle" />
+                    <br />&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-lg btn-success h2" onclick="location.href = '@Url.Action("NotImplemented", "Home")'"> Send Reports </button>
+
+                </span>
+            </div>
+            <div class="col col-md-3">
+                <span>
+                    <img  height="220" width="220" src="~/Images/Permissions.jpg" class="imgStyle img-circle" />
+                    <br />&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-lg btn-success h2" onclick="location.href = '@Url.Action("NotImplemented", "Home")'"> Permissions </button>
+
+                </span>
+            </div>
+            <div class="col col-md-3">
+                <span>
+                    <img height="220" width="220" src="~/Images/Policies.png" class="imgStyle img-circle" />
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-lg btn-success h2" onclick="location.href = '@Url.Action("NotImplemented", "Home")'"> Policies  </button>
+
+                </span>
+            </div>
+           
+        </div>
+    </div>
+</div>
+

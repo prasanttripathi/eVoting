@@ -1,0 +1,84 @@
+﻿@model IEnumerable<eVoting.OtherDBContextModel.Idea>
+
+<br />
+<span class="h3"> <b> Your  submitted Ideas </b></span>
+<br />
+<br />
+<table class="table panel-heading" style="background-color:lightgreen">
+@if (Model.Any())
+{
+
+    <tr style="background-color:black;color:white">
+        <th>
+            @Html.DisplayNameFor(model => model.IdeaID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdeaFor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Details)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsViewed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsAcknowledged)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.comments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Submitter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubmitterEmailID)
+        </th>
+        <th>Your Actions</th>
+    </tr>
+
+        
+            foreach (var item in Model)
+            {
+                <tr style="color:black">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdeaID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdeaFor)
+                    </td>
+                    <td>
+                        @Html.TextAreaFor(modelItem => item.Details, 5, 2000, new { @readonly="readonly" })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsViewed)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsAcknowledged)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.comments)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Submitter)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SubmitterEmailID)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = item.IdeaID }) |
+
+                    </td>
+                </tr>
+            }
+
+        }
+        else
+        {
+            <tr>
+                <td colspan="5">
+                    <span class="h3  text-left left pull-left" style="color:black;">you have not submitted any ideas yet </span>
+                </td>
+            </tr>
+        }
+
+    </table>

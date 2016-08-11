@@ -1,0 +1,77 @@
+﻿@model eVoting.OtherDBContextModel.Idea
+
+@{
+    ViewBag.Title = "DonateYourIdeas";
+    Layout = "~/Views/Shared/_Home.cshtml";
+}
+
+
+<div class="panel">
+    <div class="panel-heading" style="background-color:black;color:lightblue">
+        <h2>Your Ideas/suggestions are welcome !! Donate Your Ideas here </h2>
+    </div>
+    <div class="panel-body" style="background-color:lightgrey !important">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IdeaFor, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.IdeaFor, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IdeaFor, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Details, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Details, 15, 500, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Submit" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+
+        @if (ViewBag.valid == "Yes")
+        {
+            <div>
+                <br />
+                <div class="panel-body">
+                    <span class="h3" style="color:green">
+                        Your Idea has been recieved. It will be acknowledged if we like it ..
+                        <br />
+                        Thank you very much !!
+                    </span>
+                </div>
+                <br />
+            </div>
+        }
+        @if (ViewBag.valid == "No")
+        {
+            <div>
+                <br />
+                <div class="panel-body">
+                    <span class="h3" style="color:red">Please provide some logical idea</span>
+                </div>
+                <br />
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Home", "Index", "Home")
+        </div>
+    </div>
+</div>

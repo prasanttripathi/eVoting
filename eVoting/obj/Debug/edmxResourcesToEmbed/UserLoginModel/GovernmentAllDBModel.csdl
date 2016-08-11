@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="UserMarksheetDetail">
+    <Key>
+      <PropertyRef Name="MarksheetId" />
+    </Key>
+    <Property Name="MarksheetId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FathersName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Marksheettype" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserVoterIDDetail">
+    <Key>
+      <PropertyRef Name="VoterId" />
+    </Key>
+    <Property Name="VoterId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FathersName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="District" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="State" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="GovernmentDBContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="UserMarksheetDetails" EntityType="Models.UserMarksheetDetail" />
+    <EntitySet Name="UserVoterIDDetails" EntityType="Models.UserVoterIDDetail" />
+    <FunctionImport Name="GetTotalNumberOfMarksheets" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="GetTotalNumberOfVoters" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="TotalRegisteredUsers" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="GetAllVotersFromArea" EntitySet="UserVoterIDDetails" ReturnType="Collection(Models.UserVoterIDDetail)">
+      <Parameter Name="State" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="AllAdminsLists" EntityType="Models.AllAdminsList" />
+    <EntitySet Name="GeneralRequests" EntityType="Models.GeneralRequest" />
+  </EntityContainer>
+  <ComplexType Name="GetAllVotersFromArea_Result">
+    <Property Type="String" Name="VoterId" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="FathersName" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Address" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="DateOfBirth" Nullable="false" Precision="23" />
+    <Property Type="String" Name="District" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="State" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <EntityType Name="AllAdminsList">
+    <Key>
+      <PropertyRef Name="AdminID" />
+    </Key>
+    <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="AdminType" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ContactNumber" Type="Int64" />
+    <Property Name="VoterID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="GeneralRequest">
+    <Key>
+      <PropertyRef Name="RequestID" />
+    </Key>
+    <Property Name="RequestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RequestNumber" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="RequestArea" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Requestedto" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="RequestReason" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="RequesterEmail" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Requestedby" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

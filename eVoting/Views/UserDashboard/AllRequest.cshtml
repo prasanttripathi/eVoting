@@ -1,0 +1,123 @@
+﻿@model eVoting.ViewModels.AllUserRequestIdeaAndComplaint
+
+
+@{
+    ViewBag.Title = "AllRequest";
+    Layout = "~/Views/Shared/_Home.cshtml";
+}
+<h2 style="color:red">You All Requests ,Complaints, and Submitted Ideas are here</h2>
+<br />
+<br />
+<div class="panel" style="background-color:#3399ff">
+    <div class="h3" style="background-color:#3399ff;align-content:center;text-align:center;color:white"><b> Your Requests </b><br />  </div>
+
+    <table class="table panel-body" style="background-color:lightgreen">
+     
+        @if (Model.AllRequestList.Any())
+        {
+        foreach (var item in Model.AllRequestList)
+        {
+            if (ViewBag.initial == "Initial")
+            {
+                <tr style="background-color:black;color:white">
+                    <th>
+                        @Html.DisplayNameFor(model => item.RequestNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => item.RequestArea)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => item.Requestedto)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => item.RequestReason)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => item.RequesterEmail)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => item.Requestedby)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => item.status)
+                    </th>
+                    <th>Status</th>
+                </tr>
+            }
+
+
+            ViewBag.initial = "*";
+
+
+            
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RequestNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RequestArea)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Requestedto)
+                    </td>
+                    <td>
+                        @Html.TextAreaFor(modelItem => item.RequestReason, 5, 2000, new { @readonly = "readonly" })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RequesterEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Requestedby)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.status)
+                    </td>
+                    <td>
+                        @Html.ActionLink("View", "View", new { id = item.RequestID })
+                    </td>
+                </tr>
+        }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5">
+                    <span class="h3 text-left" style="color:black;text-align:left">you have not made any request yet </span>
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    </div>
+    <div class="panel" style="background-color:#3399ff;align-content:center;text-align:center;color:white">
+
+
+        @Html.Partial("Ideas", Model.AllIdeasLists)
+
+
+    </div>
+    <br />
+    <div class="panel" style="background-color:#3399ff;align-content:center;text-align:center;color:white">
+
+        @Html.Partial("Complaint", Model.AllComplaintsList)
+
+    </div>
+
+
+
+    @*this script will stop the backspace button click eventbutpage wont come down by down arrow  *@
+
+
+
+    @*@section Scripts{
+
+        <script type="text/javascript" language="javascript">
+
+            window.onkeydown = function (event) {
+                if (event.keyCode == 8);
+                return false;
+            }
+        </script>
+    }*@
+

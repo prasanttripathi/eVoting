@@ -1,0 +1,70 @@
+﻿@model IList<eVoting.OtherDBContextModel.Area>
+@using System.Threading;
+
+@{
+    ViewBag.Title = "InitiateElection";
+    Layout = "~/Views/Shared/_adminDashboard.cshtml";
+}
+
+<h2>Initiate Election for these Areas</h2>
+
+<div class="container">
+    <div class="row">
+       
+            @using (Html.BeginForm("InitiateElection","AdminDashboard",FormMethod.Post))
+            {
+                <div class="panel-body" id="AreaDetails">
+
+                    <div class="row">
+                        @for (var i = 0; i < Model.Count; i++)
+                        {
+
+                            <span class="col h3" style="color:red">
+                                @Html.HiddenFor(x => x[i].AreaId)
+                                @Html.CheckBoxFor(x => x[i].ElectionProcess)
+                                @Html.DisplayFor(x => x[i].AreaName) <span>&nbsp;&nbsp;</span>
+                            </span>
+                            if ((i + 1) % 3 == 0)
+                            {
+                                <br /><br /><br />
+                            }
+
+                        }
+                    </div>
+
+
+                    @*@foreach (var item in Model)
+                        {
+                            <div class="panel-body">
+
+                                <span class="h3" style="color:red">
+                                    <input type="checkbox" value='@item.ElectionProcess' name="ElectionProcess" @(item.ElectionProcess == true ? Html.Raw(" checked=\"checked\"") : null) style="width:20px;height:20px;" />
+                                    @Html.DisplayFor(model => item.AreaName)
+                                    @Html.HiddenFor(model => item.AreaId)
+                                </span>
+                            </div>
+                        }*@
+                </div>
+                <div class="form-group">
+                    <div class="col-md">
+                        @if (ViewBag.Message == "Success")
+                        {
+                            <span class="h3" style="color:green" id="Process"> Election is initiated for Selected Area and stopped for Not selected Area</span>
+                        }
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md">
+                        <input type="submit" value="Initiate" class="btn btn-default" />
+                    </div>
+                </div>
+
+            }
+        <div class="panel-body" style="background-color:lightsalmon">
+            @Html.Partial("ElectionInAreaProgress")
+
+        </div>
+
+    </div>
+</div>

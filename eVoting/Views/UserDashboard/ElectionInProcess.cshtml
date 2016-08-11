@@ -1,0 +1,46 @@
+﻿@model IEnumerable<eVoting.OtherDBContextModel.Area>
+
+@{
+    ViewBag.Title = "ElectionInProcess";
+    Layout = "~/Views/Shared/_userDashboard.cshtml";
+}
+
+<h3>Election are in process for these area for your District</h3>
+
+<span class="h3">District : <span style="color:red"> @ViewBag.District</span> </span>
+<br />
+<br />
+
+<div class="table">
+    <div class="panel-heading" style="color:white;background-color:black;width:600px">
+        <div class="h3"> Area</div>
+    </div>
+
+@using (Html.BeginForm("GetYourAreaCandidates", "UserDashboard", FormMethod.Post))
+{
+    <div class="panel-body" style="background-color:lightgreen;width:600px">
+        @if (Model.Any())
+        {
+            foreach (var item in Model)
+            {
+               
+                <div class="h3" style="color:red">
+                    @Html.RadioButton("area", @item.AreaId) &nbsp;@item.AreaName
+                </div>
+            <br />
+            }
+        }
+        else
+        {
+            <div style="background-color:lightcyan">
+                <span style="color:red">There is no election is in progress for your district</span>
+            </div>
+        }
+    </div>
+    <br />
+    <br />
+
+    <input class="btn-success btn-lg"  id="btnsubmit" type="submit" value="Select Your Area" /><br />
+    <span style="color:red"> * you can vote only for one area </span>
+}
+</div>

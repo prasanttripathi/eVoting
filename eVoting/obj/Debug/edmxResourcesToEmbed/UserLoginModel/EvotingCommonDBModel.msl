@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UserLoginModelStoreContainer" CdmEntityContainer="EvotingCommonDBContext">
+    <EntitySetMapping Name="Ideas">
+      <EntityTypeMapping TypeName="UserLoginModel.tblIdea">
+        <MappingFragment StoreEntitySet="tblIdeas">
+          <ScalarProperty Name="IdeaID" ColumnName="IdeaID" />
+          <ScalarProperty Name="IdeaFor" ColumnName="IdeaFor" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="IsViewed" ColumnName="IsViewed" />
+          <ScalarProperty Name="IsAcknowledged" ColumnName="IsAcknowledged" />
+          <ScalarProperty Name="comments" ColumnName="comments" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

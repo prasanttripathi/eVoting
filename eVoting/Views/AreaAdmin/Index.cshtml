@@ -1,0 +1,134 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AreaAdminDashboard.cshtml";
+}
+
+<style type="text/css">
+    .JumbotronColor {
+        background-color: #ccccff !important;
+        border: solid;
+        border-color: white;
+        height: 350px;
+        text-align: center;
+    }
+
+    .imgStyle {
+        border-style: solid;
+        border-color: #f2f2f2;
+        border-style: solid;
+        border-width: 5px;
+    }
+
+        .imgStyle:hover {
+            border-color: red;
+            border-width: 2px;
+        }
+</style>
+
+<body style="background-color:lightskyblue">
+
+    <br />
+    <span class="h2"> Welcome to Area Admin Dashboard </span>
+    <br />
+    <br />
+
+
+    <div class="jumbotron" style="background-color:lightskyblue">
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-6">
+                    @if (Session["Login"] != "Yes")
+                    {
+                        if (Session["Admin"] == "AreaAdmin")
+                        {
+                            if (Session["HasImage"] == "Yes")
+                            {
+                                <img id="displayPic" class="img-circle" src='@Url.Action("GetImageFromDatabase", "Account", new { @userID = Convert.ToInt32(Session["UserID"])})' alt="Something is wrong" height=300 width=300 />
+
+                            }
+                            else
+                            {
+                                <img id="displayPic" class="img-rounded" src="~/Images/profile.jpg" alt="Something is wrong" height=200 width=200 />
+                                <br /><span class="h3">opps ! Is that you :P </span>
+                            }
+
+                        }
+
+                    }
+
+                </div>
+                <div class="col col-md-6">
+                    <div class="panel panel-body">
+                        <table class="table">
+                            <tr>
+                                <td><span class="h4"> Name </span></td>
+                                <td> User </td>
+                            </tr>
+                            <tr>
+                                <td><span class="h4"> Age </span></td>
+                                <td> 24 </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-4 jumbotron JumbotronColor">
+                    <span>
+                        <img height="220" width="220" onmouseover="" ondblclick="location.href = '@Url.Action("AllRequest", "AreaAdmin")'" src="~/Images/Requests.jpg" class="imgStyle img-circle" />
+                        <br /> &nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-lg btn-success h2" onclick="location.href = '@Url.Action("AllRequest", "AreaAdmin")'">Request Box</button>
+                    </span>
+                </div>
+
+                <div class="col col-md-4 jumbotron JumbotronColor">
+                    <span>
+                        <img height="220" width="220" ondblclick="location.href = '@Url.Action("NotImplemented", "Home")'" src="~/Images/Send.jpg" class="imgStyle img-circle" />
+                        <br />  &nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-lg btn-success h2" onclick="location.href = '@Url.Action("NotImplemented", "Home")'"> Send to Higher Authority </button>
+                    </span>
+                </div>
+                
+                <div class="col col-md-4 jumbotron JumbotronColor">
+                    <span>
+                        <img height="220" width="220" ondblclick="location.href = '@Url.Action("NotImplemented", "Home")'" src="~/Images/local area.gif" class="imgStyle img-circle" />
+                        <br /> &nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-lg btn-success h2" onclick="location.href = '@Url.Action("AllLocalArea", "AreaAdmin")'"> Manage local Areas </button>
+                    </span>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col col-md-4 jumbotron JumbotronColor">
+                    <span>
+                        <img height="220" width="220" ondblclick="location.href = '@Url.Action("NotImplemented", "Home")'" src="~/Images/Reports2.png" class="imgStyle img-circle" />
+                        <br /> &nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-lg btn-success h2" onclick="location.href = '@Url.Action("NotImplemented", "Home")'"> Send Report</button>
+                    </span>
+                </div>
+
+                <div class="col col-md-4 jumbotron JumbotronColor">
+                    <span>
+                        <img height="220" width="220" ondblclick="location.href = '@Url.Action("NotImplemented", "Home")'" src="~/Images/data2.png" class="imgStyle img-circle" />
+                        <br /> &nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-lg btn-success h2" onclick="location.href = '@Url.Action("NotImplemented", "Home")'"> Area Data </button>
+                    </span>
+                </div>
+                <div class="col col-md-4 jumbotron JumbotronColor">
+                    <span>
+                        <img height="220" width="220" ondblclick="location.href = '@Url.Action("NotImplemented", "Home")'" src="" class="imgStyle img-circle" />
+                        <br /> &nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-lg btn-success h2" onclick="location.href = '@Url.Action("NotImplemented", "Home")'"> *** </button>
+                    </span>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</body>

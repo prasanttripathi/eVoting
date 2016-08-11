@@ -1,0 +1,109 @@
+﻿@{
+    ViewBag.Title = "Unauthorized";
+}
+
+<body style="background-color:lightsteelblue">
+    <h1 style="color:red"> You are not Authorized to view this section <span class="glyphicon glyphicon-stop"></span></h1>
+    <br />
+    <br />
+    <span class="h3"><b> <i>Let us know why you need Access</i> </b></span><br /><br />
+    <style type="text/css">
+        .ForTextBox {
+            background-color: lightblue;
+            color: black;
+        }
+    </style>
+
+    @using (Html.BeginForm("SendRequest","Request",FormMethod.Post))
+    {
+
+    <table>
+        <tr>
+            <td>
+                Requested By
+            </td>
+            <td>
+                @Html.TextBox("requestedby", "Your Name Please")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Requester Email
+            </td>
+            <td>
+                @Html.TextBox("requesterEmail", "Your email ID please")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Requested to
+            </td>
+            <td>
+                @Html.TextBox("requestedto", "prashant30191@gmail.com")
+                <span>* change the ID if you know the correct person </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Request Area
+            </td>
+            <td>
+                @Html.TextBox("requestArea","General")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Request Reason
+            </td>
+            <td>
+                @Html.TextArea("requestReason", "Please write your request here", 10, 2000, new { @class = "ForTextBox" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Submit" onclick="" name="Submit" />
+            </td>
+        </tr>
+    </table>
+    }
+
+    
+
+
+    @{
+        if ( ViewData["PartialViewDisplay"] == "Yes")
+        {
+            <div class="container">
+                <div class="panel-body">
+                    <div class="row">
+
+
+                        <div class="col-md-12 ">
+                            <div>
+                              
+                                @{
+            Html.RenderPartial("_Request");
+
+                                }
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+
+        }
+        else if (ViewData["PartialViewDisplay"] == "No")
+        {
+            <div>
+                <span class="H4"></span>
+            </div>
+
+        }
+    }
+
+
+
+
+</body>
+

@@ -1,0 +1,143 @@
+﻿@model IPagedList<GovernmentDBModels.UserMarksheetDetails>
+@using PagedList.Mvc;
+@using PagedList;
+
+@{
+    ViewBag.Title = "User's Marksheets";
+}
+@{
+    Layout = "~/Views/Shared/_Home.cshtml";
+    /* Layout = null; auto complete property is working with null and when giving below reference
+
+    <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> so place it inside Script section */
+
+}
+
+
+
+@section Scripts {
+    <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+
+            $("#search").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "GetUserMarksheetsSuggestions",
+                        dataType: "json",
+                        data: {
+                            term: request.term,
+                            Id: $('input[name=SearchBy]:checked').val()
+                        },
+                        success: function (data) {
+                            response(data);
+                        }
+                    });
+                }
+            })
+        });
+
+
+    </script>
+}
+
+
+<h2 style="color:white">User's Marksheet Details</h2>
+
+<p class="btn btn-success">
+    @Html.ActionLink("Create New", "CreateMarksheets", null, new { style = "color:white" })
+</p>
+
+@using (Html.BeginForm("Index1", "GovernmentAdmin", FormMethod.Get))
+{
+    <div style="background-color:aquamarine">
+        &nbsp; Search By : &nbsp; @Html.RadioButton("SearchBy", "MarksheetId") <text>Marksheet Id</text>   &nbsp; @Html.RadioButton("SearchBy", "Name", true) <text>Name</text>
+        &nbsp;  @Html.TextBox("search") &nbsp;&nbsp;<input type="submit" value="search Here" style="color:green" />
+    </div>
+}
+<table class="table" style="background-color:#e0e0eb;border:8px;border-style:solid;border-color:white">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MarksheetId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().FathersName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DateOfBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Marksheettype)
+        </th>
+        <th>
+            Your Actions
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MarksheetId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FathersName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marksheettype)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditMarksheets", new { id = item.MarksheetId }) |
+                @Html.ActionLink("Details", "DetailsMarksheets", new { id = item.MarksheetId }) |
+                @Html.ActionLink("Delete", "DeleteMarksheets", new { id = item.MarksheetId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, SearchBy = Request.QueryString["SearchBy"], search = Request.QueryString["search"] }),
+                    new PagedListRenderOptions
+                    {
+                        Display = PagedListDisplayMode.IfNeeded,
+
+                        DisplayItemSliceAndTotal = true,
+                        DisplayLinkToFirstPage = PagedListDisplayMode.IfNeeded,
+                        DisplayLinkToNextPage = PagedListDisplayMode.IfNeeded,
+                        DisplayLinkToLastPage = PagedListDisplayMode.IfNeeded
+                    })
+<br />
+<br />
+<br />
+
+<div class="container">
+    <div class="row">
+        <div class="btn btn-success btn-sm">
+            <b class="links glyphicon glyphicon-arrow-left text-center">
+                @Html.ActionLink("Back", "CentralHome", null, new { style = "color:white" })
+            </b>
+        </div>
+        <div class="btn btn-danger btn-sm">
+            <b class="links glyphicon glyphicon-home">
+                @Html.ActionLink("Website HomePage", "Index", "Home", null, new { style = "color:white" })
+            </b>
+        </div>
+    </div>
+
+
+</div>

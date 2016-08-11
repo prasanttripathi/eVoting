@@ -1,0 +1,189 @@
+﻿@using eVoting.ViewModels
+@model UserRegisterViewModel
+
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register </title>
+
+    @*<script src="~/Scripts/jquery-1.9.1.js"></script>
+   
+    <script src="~/Scripts/jquery.min.js"></script>
+    <link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet" />*@
+</head>
+<body>
+    <div> 
+        <section class="container jumbotron">
+            <div class="innerContainer">
+
+                <div class="row">
+                    <div id="myWizard" class="formArea LRmargin">
+               
+                        @using (Html.BeginForm())
+                        { 
+                        @Html.AntiForgeryToken()
+    <fieldset>
+        <legend class="legend" style="color:black">Register : Step 1</legend>
+        <div class="panel" style="background-color:lightsteelblue">
+            <div class="panel-body row">
+                <div class="form-group">
+
+                    <div class="table">
+                        <table>
+                            <tr>
+                                <td width="400px" height="100px">
+                                    <span class="h4 glyphicon"><span class="glyphicon glyphicon-arrow-right">&nbsp; </span>Please enter your voter ID :  </span>
+                                </td>
+                                <td>
+                                    @*@Html.TextBoxFor(m => m.VoterId, new { @Value = "VInd10000" })  &nbsp; Hint : VInd10000*@
+                                    @Html.TextBoxFor(m => m.VoterId)  &nbsp; <span class="h6"> ex : VInd10000 </span> <br />
+                                    
+                                    <span id="result"> </span>
+
+                                </td>
+                                <td>
+                                    @Html.ValidationMessageFor(m => m.VoterId) 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <br />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="h4 glyphicon"><span class="glyphicon glyphicon-arrow-right">&nbsp; </span>Please enter your Marksheet Number :  </span>
+                                </td>
+                                <td>
+                                    @*@Html.TextBoxFor(m => m.MarksheetId, new { @Value = "MKN10000" })  &nbsp; Hint : MKN10000*@
+                                    @Html.TextBoxFor(m => m.MarksheetId)  &nbsp; <span class="h6"> ex : MKN10000 </span>
+                                </td>
+                                <td>
+                                    @Html.ValidationMessageFor(m => m.MarksheetId)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <br />
+                                </td>
+                            </tr>                         
+                </table>
+                    </div>
+
+                            <div class="panel" style="width:250px">
+                                <div class="panel-body">
+
+                                   
+                                        <div class="col-md-12 col-sm-12">
+                                        <input class="btn btn-success" type="submit" value="Check Availability" />&nbsp; &nbsp;<span class="glyphicon  glyphicon-search"></span>
+                                       </div>
+                                    
+                                </div>
+                            </div>
+              
+                    <div class="panel panel-body"    >
+                        
+                            @if (TempData["Success"] != null)
+                            {
+                                <div class="green">
+                                    <p style="color:green"><span class="glyphicon glyphicon-ok-sign"> &nbsp;</span>  @TempData["Success"].ToString()</p>
+                                </div>
+                            }
+                            @if (TempData["Failed"] != null)
+                            {
+                                <div class="green">
+                                    <p style="color:red"><span class="glyphicon glyphicon-off"> &nbsp;</span>  @TempData["Failed"].ToString()</p>
+                                </div>
+                            }
+                      
+                        @if (TempData["Exception"] != null)
+                        {
+                            <div class="green">
+                                <p style="color:red"><span class="glyphicon glyphicon-off"> &nbsp;</span>  @TempData["Exception"].ToString()</p>
+                            </div>
+                        }
+                        
+                    </div>    
+
+                </div>
+
+            </div>
+            @{ 
+               if (ViewData["PartialViewDisplay"] == "PartialViewEnabled")
+                    {
+                               <div class="container">
+                                   <div class="panel-body">
+                                       <div class="row">
+                                           <div class="col-md-12 ">
+                                               <div>
+                                                   @{
+                                                      Html.RenderPartial("UserMasterDetails");
+                                                     
+                                                   }
+                                               </div>
+                                           </div>
+                                           <div class="col-md-12">
+                                              
+                                               <span class="btn btn-success btn-lg" onclick="location.href='@Url.Action("RegisterPart2", "Account")'">
+                                                   Proceed For Step 2
+                                               </span>
+                                           </div>
+                                       </div>
+                                       </div>
+                                   </div>
+                       
+                    }
+                            else if (ViewData["PartialViewDisplay"] == "PartialViewDisabled")
+                    { 
+                            <div>
+                                <span class="H4">Your Details will be Displayed here if your data is correct</span>
+                            </div>
+                                
+                    }
+            }
+
+        </div>     
+    </fieldset>
+                            
+  }
+   </div>
+    </div>
+            </div>
+        </section>
+    </div>
+    <br />
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/jscript">
+        $('#VoterId').blur(function () {
+            var url = "/Account/IsVoterIDRegistered";
+            var name = $('#VoterId').val();
+            $.get(url, { input: name }, function (data) {
+                if (data == "Available") {
+                    $("#result").html("<span style='color:green'>Registering for the first time..</span>");
+                    $("#UserName").css('background-color', '');
+                    
+                }
+                else {
+                    $("#result").html("<span style='color:red'>Ooops..It seems you have been already Registered .. </span>");
+                    $("#UserName").css('background-color', '#e97878');
+                   
+                }
+            });
+        })
+    </script>
+}    
+</body>
+
+
+</html>
+
+

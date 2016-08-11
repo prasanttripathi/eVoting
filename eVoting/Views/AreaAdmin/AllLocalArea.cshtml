@@ -1,0 +1,57 @@
+﻿@model IEnumerable<eVoting.OtherDBContextModel.Area>
+
+@{
+    ViewBag.Title = "All Local Areas";
+    Layout = "~/Views/Shared/_AreaAdminDashboard.cshtml";
+}
+
+<h2>AllLocalArea</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateLocalArea")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AreaName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AreaName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.District)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AreaId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AreaName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.District)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.State)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { AreaId = item.AreaId }) |
+          
+        </td>
+    </tr>
+}
+
+</table>

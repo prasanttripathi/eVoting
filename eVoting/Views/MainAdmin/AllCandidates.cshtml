@@ -1,0 +1,62 @@
+﻿@model IEnumerable<eVoting.OtherDBContextModel.CandidateMaster>
+
+@{
+    ViewBag.Title = "AllCandidates";
+    Layout = "~/Views/Shared/_MainAdminDashboard.cshtml";
+}
+
+<h2>AllCandidates</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateCandidate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CandidateId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CandidateName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CandidateDetails)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CandidatePicture)
+        </th>
+        <th>Your Actions</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CandidateId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CandidateName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfBirth)
+        </td>
+        <td>
+            @Html.TextAreaFor(modelItem => item.CandidateDetails, 4, 2000, new  {@readonly="readonly" })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            <img class="img-thumbnail" src="@String.Format("data:image/png;base64,{0}",Convert.ToBase64String(item.CandidatePicture) )" height=150 width=150 />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditCandidate", new { CandidateId = item.CandidateId }) |
+        </td>
+    </tr>
+}
+
+</table>

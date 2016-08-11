@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "CentralHome";
+}
+
+@{
+    Layout = "~/Views/Shared/_Home.cshtml";
+}
+
+
+<h2>Central Home</h2> 
+
+<div class="container" style="background-color:#CEF6F5" > 
+    <div class="row">
+        <div class="col-md-6" >
+            <div class="jumbotron" style="background-color:#CEF6F5">
+                <button type="button" class="btn btn-lg btn-success h2" onclick="location.href = '@Url.Action("Index", "GovernmentAdmin")'">  Voter Details </button>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="jumbotron" style="color:red;background-color:#9FF781">
+                <div class="panel-body">Click on <span class="h3">Voter Details </span>Button <br />
+                    You can see all the details of voter,you can modify ,delete and you can create a new voter ID here
+                </div>
+            </div>
+        </div>
+        </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="jumbotron" style="background-color:#CEF6F5">
+                <button type="button" class="btn btn-lg btn-success h2" onclick="location.href = '@Url.Action("Index1", "GovernmentAdmin")'">  Marksheet Details </button>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="jumbotron" style="color:red;background-color:#9FF781">
+
+                <div class="panel-body">Click on <span class="h3">Marksheet Details </span>Button <br />
+                    you can see all the user's marksheet details here,can modify.delete and can add new details here
+                </div>
+            </div>
+        </div>
+            </div>
+
+</div>
+

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UserLoginModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="UserLoginDetail">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MobileNumber" Type="Int64" Nullable="false" />
+    <Property Name="UserTypeID" Type="Int32" />
+    <Property Name="VoterId" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UserImages" Relationship="UserLoginModel.FK__UserImage__UserI__4D94879B" FromRole="UserLoginDetail" ToRole="UserImage" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="UserTypeID" />
+    </Key>
+    <Property Name="UserTypeID" Type="Int32" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="UserLoginDBContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="UserLoginDetails" EntityType="UserLoginModel.UserLoginDetail" />
+    <EntitySet Name="UserTypes" EntityType="UserLoginModel.UserType" />
+    <EntitySet Name="UserImages" EntityType="UserLoginModel.UserImage" />
+    <AssociationSet Name="FK__UserImage__UserI__4D94879B" Association="UserLoginModel.FK__UserImage__UserI__4D94879B">
+      <End Role="UserLoginDetail" EntitySet="UserLoginDetails" />
+      <End Role="UserImage" EntitySet="UserImages" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="UserImage">
+    <Key>
+      <PropertyRef Name="ImageID" />
+    </Key>
+    <Property Name="ImageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Image" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="UserID" Type="Int32" />
+    <NavigationProperty Name="UserLoginDetail" Relationship="UserLoginModel.FK__UserImage__UserI__4D94879B" FromRole="UserImage" ToRole="UserLoginDetail" />
+  </EntityType>
+  <Association Name="FK__UserImage__UserI__4D94879B">
+    <End Type="UserLoginModel.UserLoginDetail" Role="UserLoginDetail" Multiplicity="0..1" />
+    <End Type="UserLoginModel.UserImage" Role="UserImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLoginDetail">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserImage">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

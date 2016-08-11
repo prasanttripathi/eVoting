@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+      <link href="~/Images/dotnetsaifavicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../bootstrap/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../Scripts/SocialIconsCss.css">
+
+
+    <style type="text/css">
+    .bodyBackgroundStyle {
+    background-image: url("../../Images/satyameva_jayate2.jpg");
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:cover;
+    }
+        </style>
+    @*<link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-1.10.2.min.js">
+    </script>*@
+</head>
+<body class="bodyBackgroundStyle">
+  
+
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#4d4d4d">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })-->
+            </div>
+            <div class="navbar-collapse collapse">
+
+                <ul class="nav navbar-nav">
+                    
+
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Latest News", "LatestNews", "UserDashboard")</li>
+                    <li>@Html.ActionLink("Donate Your Ideas", "DonateYourIdeas", "UserDashboard")</li>
+                    <li>@Html.ActionLink("About", "About", "UserDashboard")</li>
+                    <li>@Html.ActionLink("Our Channels", "OurChannels", "UserDashboard")</li>
+                    <li>@Html.ActionLink("Complaints", "Complaints", "UserDashboard")</li>
+                    <li>@Html.ActionLink("Help", "Help", "UserDashboard")</li>
+
+
+                    @if (Session["Admin"] == "Admin")
+                    {
+                        <li>@Html.ActionLink("Dashboard", "Index", "AdminDashboard")</li>
+                    }
+                    @if (Session["User"] == "Users")
+                    {
+                        <li>@Html.ActionLink("Dashboard", "Index", "UserDashboard")</li>
+                    }
+                    @if (Session["UserName"] != null)
+                    {
+                        <li style="margin-top:15px; font-size:15px;color:white;" class="nav navbar-nav"><b class="glyphicon glyphicon-user">  @Session["UserName"] &nbsp;</b> </li>
+                    }
+
+                    @if (Session["Log"] == "LoggedIn")
+                    {
+                        <li style="margin-top:15px; color:white" class="glyphicon glyphicon-log-out "><b><a href="/Authentication/Logout" style="font-size:15px;color:white"> Logout </a><span class="glyphicon glyphicon-camera"></span></b></li>
+                    }
+                    @if (Session["Log"] == "LoggedOut")
+                    {
+                        <li style="margin-top:15px; color:white" class="glyphicon glyphicon-log-out "><b><a href="/Authentication/Login" style="font-size:15px;color:white">  Log in </a><span class="glyphicon glyphicon-camera"></span></b></li>
+                    }
+                    @if (Session["Log"] == null)
+                    {
+                        <li style="margin-top:15px; color:white" class="glyphicon glyphicon-log-in "><b><a href="/Authentication/Login" style="font-size:15px;color:white">  Log in </a><span class="glyphicon glyphicon-camera"></span></b></li>
+                    }
+
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div id="body">
+       
+        <div class="container">
+            @RenderSection("featured", required: false)
+            <section class="">
+                @RenderBody()
+            </section>
+            <br />
+            <br />
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <footer>
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12 col-md-12 text-center">
+                    <span class="text-center" style="color:darkblue;background-color:white">&nbsp;  &copy; Copyright 2016-2020, All Right reserves  &nbsp;</span><br />
+                    <span class="text-center" style="color:darkblue;background-color:white;align-content:center">&nbsp;  &copy; @DateTime.Now.Year - Contact <em><b>prasant_tripathi@infosys.com</b></em> for any technical issue  &nbsp;</span>
+                </div>
+            </div>
+        </div>
+
+
+    </footer>
+  <!-- <script src="../Scripts/jquery-1.10.2.min.js">
+    </script> --> 
+  
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+ 
+    <script type="text/javascript" src="~/Scripts/Index.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

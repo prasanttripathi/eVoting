@@ -1,0 +1,74 @@
+﻿@model eVoting.ViewModels.UserRegisterViewModel
+
+<div>
+    <h4>Your Details </h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Label("Voter ID")
+        </dt>
+
+        <dd>
+          @Html.DisplayFor(model => model.VoterId)
+        </dd>
+
+        <dt>
+            @Html.Label("Your Name")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.Label("Father's Name")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FathersName)
+        </dd>
+        <dt>
+            @Html.Label("Date Of Birth")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </dd>
+        <dt>
+            @Html.Label("Full Address")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.Label("District")
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.District)
+        </dd>
+
+        <dt>
+            @Html.Label("State")
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+        <dt>
+            @Html.Label("Marksheet Number")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MarksheetId)
+        </dd>
+        <dt>
+            @Html.Label("Marksheet Type")
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Marksheettype)
+        </dd>
+    </dl>
+</div>
+

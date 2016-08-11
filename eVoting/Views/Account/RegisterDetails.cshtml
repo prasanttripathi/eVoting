@@ -1,0 +1,91 @@
+﻿@model eVoting.ViewModels.UserRegister2Details
+
+@{
+    ViewBag.Title = "RegisterDetails";
+}
+
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+<h2 style="color:white">Register Details</h2>
+
+<div>
+    <h4 style="color:white">Your Details : </h4>
+    <hr />
+    <div class="dl-horizontal jumbotron">
+        <dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserName)<br />
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Password)<br />
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)<br />
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MobileNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MobileNumber)<br />
+            </dd>
+
+        </dl>
+        <br /><br />
+
+
+
+        
+            @if ( ViewData["UploadPicture"] == "UploadPicture")
+            {
+                <div class="container">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div>
+
+                                  @{
+                Html.RenderPartial("UploadPhoto");
+
+                                }
+
+                               </div>
+                                
+                            </div>
+                          
+                        </div>
+                    </div>
+                </div>
+            }         
+     
+        <span class="h3" style="color:red;">&nbsp;<span class="glyphicon glyphicon-bell"></span> Please NoteDown your UserName and Password safe somewhere  &nbsp;</span>
+           <p>
+            <div>
+                <span class="glyphicon glyphicon-log-in text-center"> @Html.ActionLink("Login Now", "Login", "Authentication")   </span> 
+                 &nbsp; &nbsp;  &nbsp;<span class="glyphicon glyphicon-circle-arrow-left text-center"> @Html.ActionLink("Homepage", "Index", "Home")</span>
+                
+                </div>
+            </p>
+
+    </div>
+    
+</div>
+<br />
+
+

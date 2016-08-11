@@ -1,0 +1,32 @@
+
+//1 
+
+
+@*this script will stop the backspace button click event*@
+
+
+
+@section Scripts{
+    
+    <script type="text/javascript" language="javascript">
+
+window.onkeydown = function(event)
+{
+if(event.keyCode == 8);
+return false;
+}
+</script> 
+    }
+
+
+
+
+//2
+
+dIRECT display image in view from DB 
+
+
+                <td>
+                    <img class="img-thumbnail" src="@String.Format("data:image/png;base64,{0}",Convert.ToBase64String(item.PartyLogo) )" height=100 width=100 />
+                   
+                </td>

@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Welcome to Indian E-Voting System</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../bootstrap/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../Scripts/SocialIconsCss.css">
+ 
+
+  
+</head>
+<body style="background-color:#b3ecff">  @*f0f5f5*@
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#4d4d4d">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })-->
+            </div>
+            <div class="navbar-collapse collapse">
+
+                <ul class="nav navbar-nav">
+                    @if (Session["UserName"] != null)
+                    {
+                        <li style="margin-top:15px; font-size:15px;color:white;" class="nav navbar-nav"><b class="glyphicon glyphicon-user">  @Session["UserName"] &nbsp;</b> </li>
+                    }
+
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Latest News", "NotImplemented", "Home")</li>
+                    <li>@Html.ActionLink("Donate Your Ideas", "NotImplemented", "Home")</b></li>
+                    <li>@Html.ActionLink("About", "NotImplemented", "Home")</li>
+                    <li>@Html.ActionLink("Our Channels", "NotImplemented", "Home")</li>
+                    <li>@Html.ActionLink("Complaints", "NotImplemented", "Home")</li>
+                    <li>@Html.ActionLink("Help", "NotImplemented", "Home")</li>
+
+                    <li> </li>
+                    <li> </li>
+
+                    @if (Session["Admin"] == "MainAdmin")
+                    {
+                        <li>@Html.ActionLink("Dashboard", "Index", "MainAdmin")</li>
+                    }
+
+                    @if (Session["Log"] == "LoggedIn")
+                    {
+                        <li style="margin-top:15px; color:white" class="glyphicon glyphicon-log-out "><b><a href="/Authentication/Logout" style="font-size:15px;color:white"> Logout </a><span class="glyphicon glyphicon-camera"></span></b></li>
+                    }
+                    @if (Session["Log"] == "LoggedOut")
+                    {
+                        <li style="margin-top:15px; color:white" class="glyphicon glyphicon-log-out "><b><a href="/Authentication/Login" style="font-size:15px;color:white">  Log in </a><span class="glyphicon glyphicon-camera"></span></b></li>
+                    }
+                    @if (Session["Log"] == null)
+                    {
+                        <li style="margin-top:15px; color:white" class="glyphicon glyphicon-log-in "><b><a href="/Authentication/Login" style="font-size:15px;color:white">  Log in </a><span class="glyphicon glyphicon-camera"></span></b></li>
+                    }
+
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content" style="background-color:#b3ecff">
+        @RenderBody()
+        <hr />
+        <footer>
+
+
+            <div class="container">
+                <div class="row">
+                    <div class="navbar nav-tabs">
+
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+
+                                <li><a href="" style="color:darkblue">Developer's Team  </a></li>
+                                <li><a href="" style="color:darkblue">Contact Us </a></li>
+                                <li><a href="" style="color:darkblue">Drop your complaints</a> </li>
+                                <li><a href="" style="color:darkblue">Suggest a site</a></li>
+                                <li><a href="" style="color:darkblue">Services </a></li>
+                                <li><a href="" style="color:darkblue">News Feed</a></li>
+                                <li><a href="" style="color:darkblue">Rate us</a> </li>
+                                <li><a href="" style="color:darkblue">Community</a></li>
+                                <li><a href="" style="color:darkblue">Channels</a> </li>
+                                <li><a href="" style="color:darkblue">Report a Problem</a> </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="featurette">
+                        <div class="col-md-12">
+                            <ul class="social-network social-circle">
+                                <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li>
+                                <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 text-center">
+                        <span class="text-center">&copy; Copyright 2016-2020, All Right reserves</span><br />
+                        <span class="text-center" style="color:darkblue;align-content:center">&copy; @DateTime.Now.Year - Contact <em><b>prasant_tripathi@infosys.com</b></em> for any technical issues</span>
+                    </div>
+                </div>
+            </div>
+
+
+        </footer>
+    </div>
+    <script src="../Scripts/jquery-1.10.2.min.js">
+    </script>
+    <script type="text/javascript" src="~/Scripts/Index.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

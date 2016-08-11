@@ -1,0 +1,161 @@
+﻿@model IEnumerable<eVoting.OtherDBContextModel.ElectionCandidate>
+
+@{
+    ViewBag.Title = "CandidateForElection";
+    Layout = "~/Views/Shared/_UserDashboard.cshtml";
+}
+<style type="text/css">
+     #VoteMe:hover {
+ border-color:red;
+ border-width:2px;
+ border-style:dashed;
+ border-bottom-left-radius:5px;
+ border-bottom-right-radius:5px;
+
+ background-color:green;
+    }
+    </style>
+
+<div class="panel" style="background-color:#3399ff">
+  
+   
+
+    @if( ViewBag.Status == "Voted")
+{
+
+    <div class="panel" style="background-color:#3399ff;align-content:center;text-align:center;color:white">
+
+        @Html.Partial("UserVote")
+
+    </div>
+    }
+    
+@if (ViewBag.Status == "NotVoted")
+{
+    <div class="h3" style="background-color:#3399ff;align-content:center;text-align:center;color:white"><b> Candidates For Election </b><br />  </div>
+    <div class="h4" style="background-color:#3399ff;align-content:center;text-align:center;color:white"><b> Please give your vote by clicking on "Vote for me" button to your favourate Candidate  </b><br />  </div>
+
+
+
+    <table class="table panel-body" style="background-color:lightgreen">
+        <tr style="background-color:black;color:white">
+
+           
+            <th>
+                @Html.DisplayNameFor(model => model.CandidateMaster.CandidateName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CandidateMaster.CandidatePicture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Area.AreaName) , @Html.DisplayNameFor(model => model.Area.District) & @Html.DisplayNameFor(model => model.Area.State)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.Symbol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ElectionParty.PartyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ElectionParty.PartyLogo)
+            </th>
+           
+
+            <th> Your Actions</th>
+        </tr>
+
+        @if (Model.Any())
+        {
+            int i = 1;
+            foreach (var item in Model)
+            {
+                
+                if (i % 2 == 0)
+                {
+                    <tr style="background-color:#99ccff">
+                        
+                            @Html.HiddenFor(modelItem => item.CandidateNo)
+                        
+                        <td>
+                            <span class="h3" style="color:red">  @Html.DisplayFor(modelItem => item.CandidateMaster.CandidateName)</span>
+                        </td>
+
+                        <td>
+                            <img class="img-thumbnail" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.CandidateMaster.CandidatePicture))" height=150 width=150 />
+                        </td>
+                        <td class="h3">
+                            @Html.DisplayFor(modelItem => item.Area.AreaName)<br />
+                            @Html.DisplayFor(modelItem => item.Area.District)<br />
+                            @Html.DisplayFor(modelItem => item.Area.State) <br />
+                        </td>
+                        
+                        <td>
+                            <img class="img-thumbnail" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.Symbol))" height=150 width=150 />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ElectionParty.PartyName)
+                        </td>
+                        <td>
+                            <img class="img-thumbnail" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.ElectionParty.PartyLogo))" height=150 width=150 />
+                        </td>
+
+                        <td style="background-color:yellow;border:4px solid;border-color:white;" class="img-circle img-responsive">
+                            <img id="VoteMe" onclick="location.href = '@Url.Action("CreateCountforCandidate", "UserDashboard", new { CandidateNo = item.CandidateNo })'" src="~/Images/Vote_For_Me.png" title="Vote For me" width=200 height="200" />
+
+                          </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr style="background-color:lightgreen">
+                       
+                            @Html.HiddenFor(modelItem => item.CandidateNo)
+                        
+                        <td>
+                            <span class="h3" style="color:red">   @Html.DisplayFor(modelItem => item.CandidateMaster.CandidateName)</span>
+                        </td>
+
+                        <td>
+                            <img class="img-thumbnail" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.CandidateMaster.CandidatePicture))" height=150 width=150 />
+                        </td>
+                        <td class="h3">
+                            @Html.DisplayFor(modelItem => item.Area.AreaName)<br />
+                            @Html.DisplayFor(modelItem => item.Area.District)<br />
+                            @Html.DisplayFor(modelItem => item.Area.State) <br />
+                        </td>
+                        <td>
+                            <img class="img-thumbnail" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.Symbol))" height=150 width=150 />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ElectionParty.PartyName)
+                        </td>
+                        <td>
+                            <img class="img-thumbnail" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.ElectionParty.PartyLogo))" height=150 width=150 />
+                        </td>
+
+                        <td style="background-color:yellow;border:4px solid;border-color:white;" class="img-circle img-responsive">
+                            <img id="VoteMe" onclick="location.href = '@Url.Action("CreateCountforCandidate", "UserDashboard", new { CandidateNo = item.CandidateNo })'" src="~/Images/Vote_For_Me.png" title="Vote For me" width=200 height="200" />
+   
+                          </td>
+                    </tr>
+                }
+                i = i + 1;
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6">
+                    <span class="h3">There are no candidates are registered for election</span>
+                </td>
+            </tr>
+        }
+
+      
+
+    </table>
+}
+
+</div>
+

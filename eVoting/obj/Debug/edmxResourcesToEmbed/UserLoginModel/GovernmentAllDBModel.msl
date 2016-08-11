@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="GovernmentDBContext">
+    <EntitySetMapping Name="UserMarksheetDetails">
+      <EntityTypeMapping TypeName="Models.UserMarksheetDetail">
+        <MappingFragment StoreEntitySet="tblUserMarksheetDetails">
+          <ScalarProperty Name="MarksheetId" ColumnName="MarksheetId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FathersName" ColumnName="FathersName" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Marksheettype" ColumnName="Marksheettype" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserVoterIDDetails">
+      <EntityTypeMapping TypeName="Models.UserVoterIDDetail">
+        <MappingFragment StoreEntitySet="tblUserVoterIDDetails">
+          <ScalarProperty Name="VoterId" ColumnName="VoterId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FathersName" ColumnName="FathersName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="State" ColumnName="State" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetTotalNumberOfMarksheets" FunctionName="Models.Store.GetTotalNumberOfMarksheets" />
+    <FunctionImportMapping FunctionImportName="GetTotalNumberOfVoters" FunctionName="Models.Store.GetTotalNumberOfVoters" />
+    <FunctionImportMapping FunctionImportName="TotalRegisteredUsers" FunctionName="Models.Store.TotalRegisteredUsers" />
+    <FunctionImportMapping FunctionImportName="GetAllVotersFromArea" FunctionName="Models.Store.GetAllVotersFromArea" />
+    <EntitySetMapping Name="AllAdminsLists">
+      <EntityTypeMapping TypeName="Models.AllAdminsList">
+        <MappingFragment StoreEntitySet="tblAllAdminsList">
+          <ScalarProperty Name="VoterID" ColumnName="VoterID" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="AdminType" ColumnName="AdminType" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GeneralRequests">
+      <EntityTypeMapping TypeName="Models.GeneralRequest">
+        <MappingFragment StoreEntitySet="tblGeneralRequest">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="Requestedby" ColumnName="Requestedby" />
+          <ScalarProperty Name="RequesterEmail" ColumnName="RequesterEmail" />
+          <ScalarProperty Name="RequestReason" ColumnName="RequestReason" />
+          <ScalarProperty Name="Requestedto" ColumnName="Requestedto" />
+          <ScalarProperty Name="RequestArea" ColumnName="RequestArea" />
+          <ScalarProperty Name="RequestNumber" ColumnName="RequestNumber" />
+          <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

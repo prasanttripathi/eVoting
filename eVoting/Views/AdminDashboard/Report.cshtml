@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Report";
+}
+
+<h2>Report</h2>
+
+
+<div class="container">
+    <div class="row jumbotron" id="JumbotronColor">
+        <div class="col col-md-6">
+            <div class="panel" style="background-color:lightblue">
+                <div class="panel-heading">
+                    <span style="color:red"> Total number of voters</span>
+                </div>
+                <div class="panel-body">
+                   
+                    <span style="color:green" class="h1 img-circle">@ViewBag.Result1</span>
+                </div>
+            </div>
+        </div>
+        <div class="col col-md-6">
+            <div class="panel" style="background-color:lightblue">
+                <div class="panel-heading">
+                    <span style="color:red"> Total number of Marksheets</span>
+                </div>
+                <div class="panel-body">
+                    <span style="color:green" class="h1 img-circle ">@ViewBag.Result2</span>
+                </div>
+            </div>
+        </div>
+        <div class="col col-md-6">
+            <div class="panel" style="background-color:lightblue">
+                <div class="panel-heading">
+                    <span style="color:red"> Total number of Registered Users</span>
+                </div>
+                <div class="panel-body">
+                    <span style="color:green" class="h1 img-circle ">@ViewBag.Result3</span>
+                </div>
+            </div>
+        </div>
+        <div class="col col-md-6">
+            <div class="panel" style="background-color:lightblue">
+                <div class="panel-heading">
+                    <span style="color:red"> Total Admins </span>
+                </div>
+                <div class="panel-body">
+                  <span> Area Admin      </span> <span style="color:green" class="h1"> @ViewBag.Result4[0]</span><br />
+                  <span> Main Admin      </span>  <span style="color:green" class="h1"> @ViewBag.Result4[1]</span><br />
+                  <span> Super Admin     </span><span style="color:green" class="h1">@ViewBag.Result4[2]</span>
+                 </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+

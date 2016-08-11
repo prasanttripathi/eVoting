@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblAllAdminsList">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="AdminType" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ContactNumber" Type="bigint" />
+          <Property Name="VoterID" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tblGeneralRequest">
+          <Key>
+            <PropertyRef Name="RequestID" />
+          </Key>
+          <Property Name="RequestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RequestNumber" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="RequestArea" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Requestedto" Type="varchar" MaxLength="30" />
+          <Property Name="RequestReason" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="RequesterEmail" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Requestedby" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblUserMarksheetDetails">
+          <Key>
+            <PropertyRef Name="MarksheetId" />
+          </Key>
+          <Property Name="MarksheetId" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="FathersName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
+          <Property Name="Marksheettype" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUserVoterIDDetails">
+          <Key>
+            <PropertyRef Name="VoterId" />
+          </Key>
+          <Property Name="VoterId" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="FathersName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
+          <Property Name="District" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="State" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Function Name="GetAllVotersFromArea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="State" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetTotalNumberOfMarksheets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetTotalNumberOfVoters" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="TotalRegisteredUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="ModelsStoreContainer">
+          <EntitySet Name="tblAllAdminsList" EntityType="Self.tblAllAdminsList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblGeneralRequest" EntityType="Self.tblGeneralRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserMarksheetDetails" EntityType="Self.tblUserMarksheetDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserVoterIDDetails" EntityType="Self.tblUserVoterIDDetails" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="UserMarksheetDetail">
+          <Key>
+            <PropertyRef Name="MarksheetId" />
+          </Key>
+          <Property Name="MarksheetId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FathersName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Marksheettype" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserVoterIDDetail">
+          <Key>
+            <PropertyRef Name="VoterId" />
+          </Key>
+          <Property Name="VoterId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FathersName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="District" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="GovernmentDBContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UserMarksheetDetails" EntityType="Models.UserMarksheetDetail" />
+          <EntitySet Name="UserVoterIDDetails" EntityType="Models.UserVoterIDDetail" />
+          <FunctionImport Name="GetTotalNumberOfMarksheets" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="GetTotalNumberOfVoters" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="TotalRegisteredUsers" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="GetAllVotersFromArea" EntitySet="UserVoterIDDetails" ReturnType="Collection(Models.UserVoterIDDetail)">
+          <Parameter Name="State" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="AllAdminsLists" EntityType="Models.AllAdminsList" />
+          <EntitySet Name="GeneralRequests" EntityType="Models.GeneralRequest" />
+        </EntityContainer>
+        <ComplexType Name="GetAllVotersFromArea_Result">
+          <Property Type="String" Name="VoterId" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="FathersName" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="DateOfBirth" Nullable="false" Precision="23" />
+          <Property Type="String" Name="District" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="State" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <EntityType Name="AllAdminsList">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AdminType" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNumber" Type="Int64" />
+          <Property Name="VoterID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GeneralRequest">
+          <Key>
+            <PropertyRef Name="RequestID" />
+          </Key>
+          <Property Name="RequestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequestNumber" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="RequestArea" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Requestedto" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="RequestReason" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="RequesterEmail" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Requestedby" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="GovernmentDBContext">
+          <EntitySetMapping Name="UserMarksheetDetails">
+            <EntityTypeMapping TypeName="Models.UserMarksheetDetail">
+              <MappingFragment StoreEntitySet="tblUserMarksheetDetails">
+                <ScalarProperty Name="MarksheetId" ColumnName="MarksheetId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FathersName" ColumnName="FathersName" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Marksheettype" ColumnName="Marksheettype" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserVoterIDDetails">
+            <EntityTypeMapping TypeName="Models.UserVoterIDDetail">
+              <MappingFragment StoreEntitySet="tblUserVoterIDDetails">
+                <ScalarProperty Name="VoterId" ColumnName="VoterId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FathersName" ColumnName="FathersName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetTotalNumberOfMarksheets" FunctionName="Models.Store.GetTotalNumberOfMarksheets" />
+          <FunctionImportMapping FunctionImportName="GetTotalNumberOfVoters" FunctionName="Models.Store.GetTotalNumberOfVoters" />
+          <FunctionImportMapping FunctionImportName="TotalRegisteredUsers" FunctionName="Models.Store.TotalRegisteredUsers" />
+          <FunctionImportMapping FunctionImportName="GetAllVotersFromArea" FunctionName="Models.Store.GetAllVotersFromArea">
+          </FunctionImportMapping>
+          <EntitySetMapping Name="AllAdminsLists">
+            <EntityTypeMapping TypeName="Models.AllAdminsList">
+              <MappingFragment StoreEntitySet="tblAllAdminsList">
+                <ScalarProperty Name="VoterID" ColumnName="VoterID" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="AdminType" ColumnName="AdminType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GeneralRequests">
+            <EntityTypeMapping TypeName="Models.GeneralRequest">
+              <MappingFragment StoreEntitySet="tblGeneralRequest">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="Requestedby" ColumnName="Requestedby" />
+                <ScalarProperty Name="RequesterEmail" ColumnName="RequesterEmail" />
+                <ScalarProperty Name="RequestReason" ColumnName="RequestReason" />
+                <ScalarProperty Name="Requestedto" ColumnName="Requestedto" />
+                <ScalarProperty Name="RequestArea" ColumnName="RequestArea" />
+                <ScalarProperty Name="RequestNumber" ColumnName="RequestNumber" />
+                <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

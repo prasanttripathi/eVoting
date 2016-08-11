@@ -1,0 +1,108 @@
+﻿@model IEnumerable<eVoting.OtherDBContextModel.ElectionCandidate>
+
+@{
+    ViewBag.Title = "CandidateForElection";
+    Layout = "~/Views/Shared/_MainAdminDashboard.cshtml";
+}
+
+
+<div class="panel" style="background-color:#3399ff">
+    <div class="h3" style="background-color:#3399ff;align-content:center;text-align:center;color:white"><b> Candidates For Election </b><br />  </div>
+
+    <p class="panel-body" style="width:150px;height:40px;background-color:lightgreen;color:white">
+     
+        <b>  @Html.ActionLink("Create New", "CreateCandidateForElection")</b>
+  
+    </p>
+    
+    <table class="table panel-body" style="background-color:lightgreen">
+        <tr style="background-color:black;color:white">
+            <th>
+                @Html.DisplayNameFor(model => model.CandidateNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CandidateMaster.CandidateName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CandidateMaster.CandidatePicture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Area.AreaName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Area.District)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Area.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Symbol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ElectionParty.PartyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ElectionParty.PartyLogo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+
+            <th> Your Actions</th>
+        </tr>
+
+        @if (Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CandidateNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CandidateMaster.CandidateName)
+                    </td>
+                   
+                    <td>
+                        <img class="img-thumbnail" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.CandidateMaster.CandidatePicture))" height=150 width=150 />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Area.AreaName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Area.District)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Area.State)
+                    </td>
+                    <td>
+                        <img class="img-thumbnail" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.Symbol))" height=150 width=150 />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ElectionParty.PartyName)
+                    </td>
+                    <td>
+                        <img class="img-thumbnail" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.ElectionParty.PartyLogo))" height=150 width=150 />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Edit", "EditCandidateForElection", new { CandidateNo = item.CandidateNo }) |
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6">
+                    <span class="h3">There are no candidates are registered for election</span>
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

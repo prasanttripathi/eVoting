@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "TopCandidatesForSlideshow";
+    Layout = "~/Views/Shared/_Home.cshtml";
+}
+
+<h2>Top Candidates </h2>
+<div class="jumbotron">
+    <img id="image" src="~/Images/Candidates/3.jpg" style="width: 300px; height: 300px" />
+</div>
+
+<br />
+<input type="button" value="Start Slide Show"  onclick="startImageSlideShow()" />
+<input type="button" value="Stop Slide Show" onclick="stopImageSlideShow()" />
+
+
+@section Scripts{
+  
+<script type="text/javascript">
+
+    var intervalId;
+
+    function startImageSlideShow() {
+        intervalId = setInterval(setImage, 1500);
+    }
+
+    function stopImageSlideShow() {
+        clearInterval(intervalId);
+    }
+
+    function setImage() {
+        var imageSrc = document.getElementById("image").getAttribute("src");
+        var currentImageNumber = imageSrc.substring(imageSrc.lastIndexOf("/") + 1,
+                                                    imageSrc.lastIndexOf("/") + 2);
+        if (currentImageNumber == 4) {
+            currentImageNumber = 0;
+        }
+        document.getElementById("image").setAttribute("src", "/Images/Candidates/" +
+                                          (Number(currentImageNumber) + 1) + ".jpg");
+    }
+
+</script>
+    }

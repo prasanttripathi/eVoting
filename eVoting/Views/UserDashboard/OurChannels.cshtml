@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "OurChannels";
+    Layout = "~/Views/Shared/_Home.cshtml";
+}
+
+
+<style type="text/css">
+    .JumbotronColor {
+        background-color: #ccccff !important;
+        border: solid;
+        border-color: white;
+        height: 350px;
+        text-align: center;
+    }
+
+    .imgStyle {
+        border-style: solid;
+        border-color: #f2f2f2;
+        border-style: solid;
+        border-width: 5px;
+    }
+
+        .imgStyle:hover {
+            border-color: red;
+            border-width: 2px;
+        }
+</style>
+<body style="background-color:lightskyblue">
+
+
+    <div class="jumbotron" style="background-color:lightskyblue">
+
+        <span class="h2"> Welcome to Our Channels</span>
+        <br />
+        <br />
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-6 jumbotron JumbotronColor">
+                    <span>
+                        <img height="220" width="220" onmouseover="" ondblclick="location.href = '@Url.Action("NotImplemented", "Home")'" src="~/Images/Channel1.png" class="imgStyle img-rounded" />
+                        <br /> &nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-lg btn-success h2" disabled>Videos for you</button>
+                    </span>
+                </div>
+
+                <div class="col col-md-6 jumbotron JumbotronColor">
+                    <span>
+                        <img height="220" width="220" ondblclick="location.href = '@Url.Action("NotImplemented", "Home")'" src="~/Images/Channel2.jpg" class="imgStyle img-rounded" />
+                        <br />  &nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-lg btn-success h2" disabled> Voting Process Development </button>
+                    </span>
+                </div>
+
+
+
+            </div>
+            <div class="row">
+                <div class="col col-md-6 jumbotron JumbotronColor">
+                    <span>
+                        <img height="220" width="220" ondblclick="location.href = '@Url.Action("NotImplemented", "Home")'" src="~/Images/Channel3.png" class="imgStyle img-rounded" />
+                        <br /> &nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-lg btn-success h2" disabled> How we organize</button>
+                    </span>
+                </div>
+
+                <div class="col col-md-6 jumbotron JumbotronColor">
+                    <span>
+                        <img height="220" width="220" ondblclick="location.href = '@Url.Action("NotImplemented", "Home")'" src="~/Images/Channel4.jpg" class="imgStyle img-rounded" />
+                        <br /> &nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-lg btn-success h2" disabled> Security </button>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>

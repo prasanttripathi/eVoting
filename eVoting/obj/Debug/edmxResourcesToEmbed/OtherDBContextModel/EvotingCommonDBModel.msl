@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OtherDBContextModelStoreContainer" CdmEntityContainer="EvotingCommonDBContext">
+    <EntitySetMapping Name="UserComplaints">
+      <EntityTypeMapping TypeName="OtherDBContextModel.UserComplaints">
+        <MappingFragment StoreEntitySet="tbl_UserComplaints">
+          <ScalarProperty Name="ComplaintID" ColumnName="ComplaintID" />
+          <ScalarProperty Name="ComplaintFor" ColumnName="ComplaintFor" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="IsViewed" ColumnName="IsViewed" />
+          <ScalarProperty Name="IsAcknowledged" ColumnName="IsAcknowledged" />
+          <ScalarProperty Name="comments" ColumnName="comments" />
+          <ScalarProperty Name="Submitter" ColumnName="Submitter" />
+          <ScalarProperty Name="SubmitterEmail" ColumnName="SubmitterEmail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ideas">
+      <EntityTypeMapping TypeName="OtherDBContextModel.Idea">
+        <MappingFragment StoreEntitySet="tblIdeas">
+          <ScalarProperty Name="IdeaID" ColumnName="IdeaID" />
+          <ScalarProperty Name="IdeaFor" ColumnName="IdeaFor" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="IsViewed" ColumnName="IsViewed" />
+          <ScalarProperty Name="IsAcknowledged" ColumnName="IsAcknowledged" />
+          <ScalarProperty Name="comments" ColumnName="comments" />
+          <ScalarProperty Name="Submitter" ColumnName="Submitter" />
+          <ScalarProperty Name="SubmitterEmailID" ColumnName="SubmitterEmailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Areas">
+      <EntityTypeMapping TypeName="OtherDBContextModel.Area">
+        <MappingFragment StoreEntitySet="tblAreas">
+          <ScalarProperty Name="ElectionProcess" ColumnName="ElectionProcess" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+          <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CandidateMasters">
+      <EntityTypeMapping TypeName="OtherDBContextModel.CandidateMaster">
+        <MappingFragment StoreEntitySet="tblCandidateMaster">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CandidateDetails" ColumnName="CandidateDetails" />
+          <ScalarProperty Name="CandidatePicture" ColumnName="CandidatePicture" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="CandidateName" ColumnName="CandidateName" />
+          <ScalarProperty Name="CandidateId" ColumnName="CandidateId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ElectionCandidates">
+      <EntityTypeMapping TypeName="OtherDBContextModel.ElectionCandidate">
+        <MappingFragment StoreEntitySet="tblElectionCandidate">
+          <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+          <ScalarProperty Name="PartyId" ColumnName="PartyId" />
+          <ScalarProperty Name="CandidateId" ColumnName="CandidateId" />
+          <ScalarProperty Name="CandidateNo" ColumnName="CandidateNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ElectionParties">
+      <EntityTypeMapping TypeName="OtherDBContextModel.ElectionParty">
+        <MappingFragment StoreEntitySet="tblElectionParties">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="PartyLogo" ColumnName="PartyLogo" />
+          <ScalarProperty Name="PartyHeadOffice" ColumnName="PartyHeadOffice" />
+          <ScalarProperty Name="PartyHead" ColumnName="PartyHead" />
+          <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+          <ScalarProperty Name="PartyId" ColumnName="PartyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EvotingAdmins">
+      <EntityTypeMapping TypeName="OtherDBContextModel.EvotingAdmin">
+        <MappingFragment StoreEntitySet="tblEvotingAdmins">
+          <ScalarProperty Name="AdminTypeID" ColumnName="AdminTypeID" />
+          <ScalarProperty Name="VoterID" ColumnName="VoterID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SuperAreaDetails">
+      <EntityTypeMapping TypeName="OtherDBContextModel.SuperAreaDetail">
+        <MappingFragment StoreEntitySet="tblSuperAreaDetail">
+          <ScalarProperty Name="ToReportingAdminID" ColumnName="ToReportingAdminID" />
+          <ScalarProperty Name="AreaAdminId" ColumnName="AreaAdminId" />
+          <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+          <ScalarProperty Name="AreaNumber" ColumnName="AreaNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VoteCounts">
+      <EntityTypeMapping TypeName="OtherDBContextModel.VoteCount">
+        <MappingFragment StoreEntitySet="tblVoteCount">
+          <ScalarProperty Name="CandidateId" ColumnName="CandidateId" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="CandidateNo" ColumnName="CandidateNo" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

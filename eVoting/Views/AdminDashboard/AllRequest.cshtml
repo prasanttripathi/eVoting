@@ -1,0 +1,109 @@
+﻿@model IEnumerable<eVoting.UserLoginModel.GeneralRequest>
+
+@{
+    ViewBag.Title = "AllRequest";
+    Layout = "~/Views/Shared/_adminDashboard.cshtml";
+}
+
+<h2>All Requests</h2>
+
+<style type="text/css">
+    .linkdisabled {
+        color: gray;
+    }
+
+        .linkdisabled:hover {
+            color: gray;      
+        }
+</style>
+
+<table class="table panel-body" style="background-color:lightgreen">
+    <tr style="background-color:black;color:white">
+        <th>
+            @Html.DisplayNameFor(model => model.RequestNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RequestArea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Requestedto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RequestReason)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RequesterEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Requestedby)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th>Your Actions</th>
+    </tr>
+    @if (Model.Any())
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RequestNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RequestArea)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Requestedto)
+                </td>
+                <td>
+                    @Html.TextAreaFor(modelItem => item.RequestReason, 5, 2000, new { })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RequesterEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Requestedby)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.status)
+                </td>
+                @if (item.status == "Approved" || item.status == "Rejected")
+                {
+                
+                    // new { onclick = "javascript:return false;" }
+                <td>
+                    @Html.ActionLink("Approve", "Approve", new { id = item.RequestID }, new { @class = "linkdisabled", onclick = "javascript:return false;"}) |                  
+                    @Html.ActionLink("Reject", "Reject", new { id = item.RequestID }, new { @class = "linkdisabled", onclick = "javascript:return false;" }) |
+                    @Html.ActionLink("View", "View", new { id = item.RequestID })
+
+
+                </td>
+                }
+                else
+                {
+                <td>
+                    @Html.ActionLink("Approve", "Approve", new { id = item.RequestID }) |
+                    @Html.ActionLink("Reject", "Reject", new { id = item.RequestID }) |
+                    @Html.ActionLink("View", "View", new { id = item.RequestID })
+                </td>
+
+                }
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="5">
+                <span class="h3">There is no requests in your box </span>
+            </td>
+        </tr>
+    }
+
+
+
+</table>
+
+
+

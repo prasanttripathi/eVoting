@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UserLoginModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblIdea">
+    <Key>
+      <PropertyRef Name="IdeaID" />
+    </Key>
+    <Property Name="IdeaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdeaFor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Details" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="IsViewed" Type="Boolean" />
+    <Property Name="IsAcknowledged" Type="Boolean" />
+    <Property Name="comments" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="EvotingCommonDBContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Ideas" EntityType="Self.tblIdea" />
+  </EntityContainer>
+</Schema>

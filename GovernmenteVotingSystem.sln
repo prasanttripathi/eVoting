@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eVoting", "eVoting\eVoting.csproj", "{9190DC21-5BA1-4297-BEA6-3CD48B6FB0E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GovernmentDBModels", "GovernmentDBModels\GovernmentDBModels.csproj", "{E8B6C558-B537-4D1D-B33D-0F7A226EF8B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EVotingDBModels", "EVotingDBModels\EVotingDBModels.csproj", "{50DF6D5F-000F-4902-98A0-05047B9DDCB0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D5BA3013-DA99-46DC-8104-804D7337AF27}"
+	ProjectSection(SolutionItems) = preProject
+		Notes.txt = Notes.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9190DC21-5BA1-4297-BEA6-3CD48B6FB0E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9190DC21-5BA1-4297-BEA6-3CD48B6FB0E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9190DC21-5BA1-4297-BEA6-3CD48B6FB0E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9190DC21-5BA1-4297-BEA6-3CD48B6FB0E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8B6C558-B537-4D1D-B33D-0F7A226EF8B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8B6C558-B537-4D1D-B33D-0F7A226EF8B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8B6C558-B537-4D1D-B33D-0F7A226EF8B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8B6C558-B537-4D1D-B33D-0F7A226EF8B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50DF6D5F-000F-4902-98A0-05047B9DDCB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50DF6D5F-000F-4902-98A0-05047B9DDCB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50DF6D5F-000F-4902-98A0-05047B9DDCB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50DF6D5F-000F-4902-98A0-05047B9DDCB0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

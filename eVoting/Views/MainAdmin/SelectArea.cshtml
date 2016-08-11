@@ -1,0 +1,55 @@
+﻿@model IEnumerable<string>
+
+@{
+    ViewBag.Title = "select Area";
+    Layout = "~/Views/Shared/_MainAdminDashboard.cshtml";
+}
+
+
+<h2>Select Area</h2>
+
+
+
+@using (Html.BeginForm("GetAreaData", "MainAdmin", FormMethod.Post))
+{
+    <table class="table">
+        <tr>
+            <th>
+                All  Available Areas are
+            </th>
+
+        </tr>
+
+        <tr>
+            <td>
+                @Html.RadioButton("area", "All Area", new { @checked = "true" }) &nbsp; All Area
+            </td>
+        </tr>
+        
+
+        @foreach (var area in Model)
+        {
+            @*<tr>
+                <td>
+                    <input type="radio" name="area" value=@area  /> @area
+                </td>
+            </tr>*@   //new delhi was not receiving in controller,only new was receiving with this code
+    <tr>
+        <td>
+            @Html.RadioButton("area", @area) &nbsp;@area
+        </td>
+    </tr>
+  
+
+        }
+    </table>
+
+    <input id="btnsubmit" type="submit" value="submit" />
+}
+<br />
+<br />
+<div>
+    <b class="links glyphicon glyphicon-backward">
+        @Html.ActionLink("Back", "Index", "MainAdmin", null, new { style = "color:red" })
+    </b>
+</div>

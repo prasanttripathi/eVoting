@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblAllAdminsList">
+    <Key>
+      <PropertyRef Name="AdminID" />
+    </Key>
+    <Property Name="AdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="AdminType" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ContactNumber" Type="bigint" />
+    <Property Name="VoterID" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="tblGeneralRequest">
+    <Key>
+      <PropertyRef Name="RequestID" />
+    </Key>
+    <Property Name="RequestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RequestNumber" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="RequestArea" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Requestedto" Type="varchar" MaxLength="30" />
+    <Property Name="RequestReason" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="RequesterEmail" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Requestedby" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblUserMarksheetDetails">
+    <Key>
+      <PropertyRef Name="MarksheetId" />
+    </Key>
+    <Property Name="MarksheetId" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="FathersName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
+    <Property Name="Marksheettype" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblUserVoterIDDetails">
+    <Key>
+      <PropertyRef Name="VoterId" />
+    </Key>
+    <Property Name="VoterId" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="FathersName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
+    <Property Name="District" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="State" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <Function Name="GetAllVotersFromArea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="State" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetTotalNumberOfMarksheets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetTotalNumberOfVoters" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="TotalRegisteredUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="ModelsStoreContainer">
+    <EntitySet Name="tblAllAdminsList" EntityType="Self.tblAllAdminsList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblGeneralRequest" EntityType="Self.tblGeneralRequest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUserMarksheetDetails" EntityType="Self.tblUserMarksheetDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUserVoterIDDetails" EntityType="Self.tblUserVoterIDDetails" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

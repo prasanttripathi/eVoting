@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8af70c4547334ded8e9e05f8e8fec166" Name="Diagram1" ZoomLevel="101">
+        <EntityTypeShape EntityType="OtherDBContextModel.UserComplaints" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtherDBContextModel.Idea" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtherDBContextModel.Area" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="OtherDBContextModel.CandidateMaster" Width="1.5" PointX="0.75" PointY="9.625" />
+        <EntityTypeShape EntityType="OtherDBContextModel.ElectionCandidate" Width="1.5" PointX="3" PointY="5" />
+        <EntityTypeShape EntityType="OtherDBContextModel.ElectionParty" Width="1.5" PointX="0.75" PointY="5" />
+        <EntityTypeShape EntityType="OtherDBContextModel.EvotingAdmin" Width="1.5" PointX="5.75" PointY="1.125" />
+        <EntityTypeShape EntityType="OtherDBContextModel.SuperAreaDetail" Width="1.5" PointX="8" PointY="0.875" />
+        <AssociationConnector Association="OtherDBContextModel.FK__tblElecti__AreaI__778AC167" />
+        <AssociationConnector Association="OtherDBContextModel.FK__tblElecti__Candi__75A278F5" />
+        <AssociationConnector Association="OtherDBContextModel.FK__tblElecti__Party__76969D2E" />
+        <AssociationConnector Association="OtherDBContextModel.FK__tblSuperA__AreaA__14270015" />
+        <AssociationConnector Association="OtherDBContextModel.FK__tblSuperA__ToRep__151B244E" />
+        <EntityTypeShape EntityType="OtherDBContextModel.VoteCount" Width="1.5" PointX="5.25" PointY="5.625" />
+        <AssociationConnector Association="OtherDBContextModel.FK__tblVoteCo__Candi__282DF8C2" />
+        <AssociationConnector Association="OtherDBContextModel.FK__tblVoteCo__Candi__2BFE89A6" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

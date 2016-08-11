@@ -1,0 +1,49 @@
+﻿@if( Session["UploadPicture"] == "Success")
+{ 
+    <span class="h3" style="color:green">Congrates !! Your picture is successfully uploaded  </span>
+    <span class="H4" style="color:green">Thanks for uploading your picture </span><br />
+    <br />
+    <br />
+   <img class="img-thumbnail" src='@Url.Action("GetImageFromDatabase", "Account", new { @userID = Convert.ToInt32(Session["UID"])})'  alt="Something is wrong" height=300 width=300 />
+     <br />
+    <br />
+
+}
+
+else
+{
+    using (Html.BeginForm("UploadImageToDatabase", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="panel-body">
+            <div class="form-horizontal">
+                <h4>We Need your picture ,this will be helpful at the time of evoing .Please Upload </h4>
+                <hr />
+                <br />
+                <br />
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.Label("Picture", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="file" name="ImageData" id="ImageData" />
+                        @Html.ValidationMessage("Picture", "", new { @class = "text-danger" })
+                    </div>
+                    @if (Session["UploadPicture"] == "error")
+                    {
+                        <span class="h3"> Something went wrong</span>
+                    }
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Upload" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+
+}
