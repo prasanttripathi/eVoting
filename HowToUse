@@ -1,0 +1,20 @@
+how to use this project:
+
+1. You need to install visual studio 2012/13, Sql serevr 2012, and from nuget add entity framework to your project.
+2. Evoting is main project and others are model libraries.
+3. This project has 4 roles.
+SuperAdmin- (highest level)  
+MainAdmin
+AreaAdmin
+Basic users
+
+4. I have added snaps for this application,just looking into that you can see what actions they can perform.
+5.authentication and authorization is used here and this application is fully secured
+6. Run the database backup or if you are already known to entityframework then use code first approach to generate your own database and data.
+
+
+
+
+For any query you can directly reach out to me at prashant30192@gmail.com
+
+Happy to help and All the best !!
